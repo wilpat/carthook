@@ -18,4 +18,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'username', 'email', 'phone', 'website'
     ];
+    
+    public function comments()
+    {
+        return $this->hasManyThrough(Comment::class, Post::class);
+    }
+
+    public function posts() {
+        return $this->hasMany(Comment::class);
+    }
 }
