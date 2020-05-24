@@ -63,7 +63,7 @@ Route::get('/cache', function () {
             });
         });
     });
-
+    return "Cache completed!";
     
 });
 

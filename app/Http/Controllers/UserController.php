@@ -15,21 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = Http::get('https://jsonplaceholder.typicode.com/users')
-            ->json();
-        return $users; 
+        $users = User::all();
+        return $users;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+   
 
     /**
      * Display the specified user
@@ -37,10 +27,8 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($user)
+    public function show(User $user)
     {
-        $user = Http::get("https://jsonplaceholder.typicode.com/users/$user")
-            ->json();
         return $user;
     }
 
@@ -50,10 +38,9 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function posts($user)
+    public function posts(User $user)
     {
-        $posts = Http::get("https://jsonplaceholder.typicode.com/posts?userId=$user")
-            ->json();
+        $posts = $user->posts;
         return $posts;
     }
 }
